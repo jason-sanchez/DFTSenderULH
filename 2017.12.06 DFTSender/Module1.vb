@@ -18,8 +18,8 @@ Module Module1
     Dim NWStream As NetworkStream
     Dim client As New TcpClient
     Dim file As System.IO.StreamWriter
-    Public objIniFile As New INIFile("d:\W3Production\HL7Transmitter.ini") 'Prod 20140818
-    'Public objIniFile As New INIFile("C:\W3Feeds\HL7Transmitter.ini") 'Test 20140818
+    'Public objIniFile As New INIFile("d:\W3Production\HL7Transmitter.ini") 'Prod 20140818
+    Public objIniFile As New INIFile("C:\W3Feeds\HL7Transmitter.ini") 'Test 20140818
     Dim IPAddress As String = ""
     Dim port As String = ""
     Dim DFTDirectory As String = ""
@@ -31,10 +31,10 @@ Module Module1
     Sub main()
 
         Try
-            file = My.Computer.FileSystem.OpenTextFileWriter("d:\dftLog\transmitlog.txt", True)
-            IPAddress = objIniFile.GetString("Transmitter", "IPAddress", "(none)")
-            port = objIniFile.GetString("Transmitter", "Port", "(none)")
-            DFTDirectory = objIniFile.GetString("Transmitter", "DFTDirectory", "(none)")
+            file = My.Computer.FileSystem.OpenTextFileWriter("d:\dftLog\ULH\transmitlog.txt", True)
+            IPAddress = objIniFile.GetString("Transmitter", "IPAddressULH", "(none)")
+            port = objIniFile.GetString("Transmitter", "PortULH", "(none)")
+            DFTDirectory = objIniFile.GetString("Transmitter", "DFTDirectoryULH", "(none)")
             'start connection
             client.Connect(IPAddress, port)
 
@@ -141,7 +141,7 @@ Module Module1
     End Sub
 
     Public Sub CreateErrorFile(ByVal errorstring As String)
-        Dim errorfilepath As String = objIniFile.GetString("Transmitter", "ErrorDir", "(none)")
+        Dim errorfilepath As String = objIniFile.GetString("Transmitter", "ErrorDirULH", "(none)")
         Dim errorfilename As String = String.Format("_DFTError-'" & "'_{0:yyyyMMdd_HH-mm-ss}.txt", Date.Now)
         Dim errorfile = New StreamWriter(errorfilepath & errorfilename, True)
         errorfile.Write(errorstring)

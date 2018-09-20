@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DFTSender", "DFTSender.vbproj", "{41CE9558-5348-409E-9311-E867371E83DE}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DFTSenderULH", "DFTSenderULH.vbproj", "{41CE9558-5348-409E-9311-E867371E83DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74C73331-1257-49FF-9E1A-3281AA35A96B}
 	EndGlobalSection
 EndGlobal
