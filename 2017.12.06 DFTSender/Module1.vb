@@ -19,7 +19,11 @@ Module Module1
     Dim client As New TcpClient
     Dim file As System.IO.StreamWriter
     'Public objIniFile As New INIFile("d:\W3Production\HL7Transmitter.ini") 'Prod 20140818
-    Public objIniFile As New INIFile("C:\W3Feeds\HL7Transmitter.ini") 'Test 20140818
+    'Public objIniFile As New INIFile("C:\W3Feeds\HL7Transmitter.ini") 'Test 20140818
+    'Private fullinipath As String = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory, "..\..\..\Configs\ULH\HL7Transmitter.ini")) ' New test
+    Private fullinipath As String = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory, "..\..\..\..\..\..\..\..\..\Configs\ULH\HL7Transmitter.ini")) ' local
+    Public objIniFile As New INIFile(fullinipath) '20140817 - New Test
+    'Public objIniFile As New INIFile("N:\FeedTester\Configs\ULH\HL7Transmitter.ini") '20140817 - New Test
     Dim IPAddress As String = ""
     Dim port As String = ""
     Dim DFTDirectory As String = ""
@@ -31,7 +35,8 @@ Module Module1
     Sub main()
 
         Try
-            file = My.Computer.FileSystem.OpenTextFileWriter("d:\dftLog\ULH\transmitlog.txt", True)
+            file = My.Computer.FileSystem.OpenTextFileWriter(objIniFile.GetString("Transmitter", "transmitlogULH", "(none)"), True)
+            'file = My.Computer.FileSystem.OpenTextFileWriter("d:\dftLog\ULH\transmitlog.txt", True)
             IPAddress = objIniFile.GetString("Transmitter", "IPAddressULH", "(none)")
             port = objIniFile.GetString("Transmitter", "PortULH", "(none)")
             DFTDirectory = objIniFile.GetString("Transmitter", "DFTDirectoryULH", "(none)")
